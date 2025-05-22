@@ -1,0 +1,53 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+tmp/
+temp/
+.cache/
+coverage/
+.env
+.env.* 
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+.history/
+
+# Frontend (React/Vite/Angular/etc)
+*.local
+*.sublime-workspace
+*.sublime-project
+*.swp
+.idea/
+*.iml
+
+# React Native
+.expo/
+.expo-shared/
+
+# MongoDB
+dump/
+*.lock
+
+# Misc
+*.tgz
+*.gz
+*.zip
+*.tar
+
+# Others (optional, uncomment if needed)
+# public/static/
+# backend/static/
