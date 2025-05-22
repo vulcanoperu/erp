@@ -1,10 +1,18 @@
 import React from "react";
+import MainMenu from "../components/shared/MainMenu";
+import SecondaryMenu from "../components/shared/SecondaryMenu";
+import Dashboard from "../components/Home/Dashboard";
 
-const Home = () => (
-  <div className="text-center mt-10">
-    <h1 className="text-2xl font-bold">Bienvenido al Home</h1>
-    <p>Has iniciado sesión correctamente.</p>
-  </div>
-);
+export default function Home() {
+  const handleLogout = () => {
+    window.location.href = "/login";
+  };
 
-export default Home;
+  return (
+    <div className="min-h-screen bg-gray-50 relative">
+      <SecondaryMenu onLogout={handleLogout} />
+      <MainMenu />
+      <Dashboard />
+    </div>
+  );
+}

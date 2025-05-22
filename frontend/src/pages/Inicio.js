@@ -1,4 +1,6 @@
 import React from "react";
+import MainMenu from "../components/shared/MainMenu";
+import SecondaryMenu from "../components/shared/SecondaryMenu";
 import { FaShoppingCart, FaBoxes, FaUsers, FaTruck, FaChartBar } from "react-icons/fa";
 
 const cards = [
@@ -29,20 +31,29 @@ const cards = [
   },
 ];
 
-export default function Dashboard() {
+export default function Inicio() {
+  const handleLogout = () => {
+    // Lógica de cerrar sesión
+    window.location.href = "/login";
+  };
+
   return (
-    <div className="flex justify-center mt-12">
-      <div className="flex gap-6">
-        {cards.map((card) => (
-          <div
-            key={card.title}
-            className="flex flex-col items-center bg-white rounded-lg shadow-md p-6 w-56 mx-2 hover:shadow-lg transition"
-          >
-            {card.icon}
-            <h3 className="mt-3 text-xl font-semibold">{card.title}</h3>
-            <p className="text-gray-500 mt-2 text-sm text-center">{card.description}</p>
-          </div>
-        ))}
+    <div className="min-h-screen bg-gray-50 relative">
+      <SecondaryMenu onLogout={handleLogout} />
+      <MainMenu />
+      <div className="flex justify-center mt-12">
+        <div className="flex gap-6">
+          {cards.map((card) => (
+            <div
+              key={card.title}
+              className="flex flex-col items-center bg-white rounded-lg shadow-md p-6 w-56 mx-2 hover:shadow-lg transition"
+            >
+              {card.icon}
+              <h3 className="mt-3 text-xl font-semibold">{card.title}</h3>
+              <p className="text-gray-500 mt-2 text-sm text-center">{card.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
