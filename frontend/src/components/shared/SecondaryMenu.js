@@ -1,20 +1,33 @@
 import React from "react";
-import { FaHome, FaCog, FaSignOutAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-export default function SecondaryMenu({ onLogout }) {
+export default function SecondaryMenu() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("auth"); // O el key que uses para la sesión
+    navigate("/login");
+  };
+
   return (
-    <nav className="absolute right-4 top-4 flex gap-4 items-center z-20">
-      <button className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition">
-        <FaHome /> Inicio
-      </button>
-      <button className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition">
-        <FaCog /> Configuración
+    <nav className="bg-gray-900 flex justify-end items-center px-8 py-2 text-sm z-20 border-b border-gray-800">
+      <button
+        className="text-gray-200 hover:text-white transition mx-2 bg-transparent border-none"
+        onClick={() => navigate("/home")}
+      >
+        Inicio
       </button>
       <button
-        className="flex items-center gap-2 text-gray-700 hover:text-red-600 transition"
-        onClick={onLogout}
+        className="text-gray-200 hover:text-white transition mx-2 bg-transparent border-none"
+        onClick={() => navigate("/config")}
       >
-        <FaSignOutAlt /> Cerrar sesión
+        Configuración
+      </button>
+      <button
+        className="text-gray-200 hover:text-red-400 transition mx-2 bg-transparent border-none"
+        onClick={handleLogout}
+      >
+        Cerrar sesión
       </button>
     </nav>
   );

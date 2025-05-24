@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 import {
   login,
   obtenerPregunta,
@@ -6,11 +6,10 @@ import {
   cambiarClave
 } from "../controllers/authController.js";
 
-const router = express.Router();
+const router = Router();
 
-// Deben ser métodos POST (no GET)
 router.post("/login", login);
-router.post("/pregunta", obtenerPregunta);
+router.post("/obtener-pregunta", obtenerPregunta);
 router.post("/validar-respuesta", validarRespuesta);
 router.post("/cambiar-clave", cambiarClave);
 

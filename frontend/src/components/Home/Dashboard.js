@@ -1,47 +1,58 @@
 import React from "react";
-import { FaShoppingCart, FaBoxes, FaUsers, FaTruck, FaChartBar } from "react-icons/fa";
+import { PiShoppingBagLight, PiCubeLight, PiUserLight, PiTruckLight, PiChartBarLight } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 const cards = [
   {
-    icon: <FaShoppingCart size={36} className="text-blue-500" />,
+    icon: <PiShoppingBagLight size={38} className="text-slate-500" />,
     title: "Ventas",
-    description: "Registra y gestiona tus ventas, consulta historial y administra comprobantes de manera eficiente.",
+    description: "Gestiona tus ventas y comprobantes.",
+    route: "/sales",
   },
   {
-    icon: <FaBoxes size={36} className="text-green-500" />,
+    icon: <PiCubeLight size={38} className="text-slate-500" />,
     title: "Inventario",
-    description: "Monitorea el stock, controla entradas y salidas y recibe alertas de productos bajos en inventario.",
+    description: "Controla tu stock y movimientos.",
+    route: "/inventory",
   },
   {
-    icon: <FaUsers size={36} className="text-purple-500" />,
+    icon: <PiUserLight size={38} className="text-slate-500" />,
     title: "Clientes",
-    description: "Administra la información de tus clientes y consulta su historial de compras y pagos.",
+    description: "Administra tus clientes y sus compras.",
+    route: "/clients",
   },
   {
-    icon: <FaTruck size={36} className="text-yellow-500" />,
+    icon: <PiTruckLight size={38} className="text-slate-500" />,
     title: "Proveedores",
-    description: "Gestiona tus proveedores, registra compras y haz seguimiento a tus órdenes de abastecimiento.",
+    description: "Gestiona proveedores y compras.",
+    route: "/suppliers",
   },
   {
-    icon: <FaChartBar size={36} className="text-pink-500" />,
+    icon: <PiChartBarLight size={38} className="text-slate-500" />,
     title: "Reportes",
-    description: "Genera reportes personalizados de ventas, compras e inventario para una mejor toma de decisiones.",
-  },
+    description: "Visualiza reportes y estadísticas.",
+    route: "/reports",
+  }
+  // Se ha eliminado la tarjeta de "Configuración"
 ];
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+
   return (
-    <div className="flex justify-center mt-12">
-      <div className="flex gap-6">
+    <div className="flex flex-col items-center mt-12">
+      <div className="flex flex-wrap gap-7 justify-center">
         {cards.map((card) => (
-          <div
+          <button
             key={card.title}
-            className="flex flex-col items-center bg-white rounded-lg shadow-md p-6 w-56 mx-2 hover:shadow-lg transition"
+            onClick={() => navigate(card.route)}
+            className="flex flex-col items-center bg-white rounded-xl border border-gray-200 shadow-sm p-6 w-52 mx-2 hover:bg-gray-100 hover:border-gray-400 transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-slate-400 group"
+            style={{ transition: "all 0.15s" }}
           >
-            {card.icon}
-            <h3 className="mt-3 text-xl font-semibold">{card.title}</h3>
-            <p className="text-gray-500 mt-2 text-sm text-center">{card.description}</p>
-          </div>
+            <span className="mb-2 group-hover:scale-110 transition">{card.icon}</span>
+            <span className="mt-1 text-lg font-medium text-gray-800 group-hover:text-gray-900">{card.title}</span>
+            <span className="text-sm text-gray-500 mt-2 text-center">{card.description}</span>
+          </button>
         ))}
       </div>
     </div>
